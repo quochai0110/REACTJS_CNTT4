@@ -1,0 +1,1 @@
+// chứa hàm dùng chung
