@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="products">
+       
+    </ul>
+    <button onclick="pay()">thanh toán!</button>
+    <script>
+
+        let products=[
+            {
+                 id:1,
+                name:"iphone5",
+                price:100,
+                discount:0.1,
+                quantity:4 ,// số lượng sản trong cửa hàng
+               
+            },
+            {
+                id:2,
+                name:"iphone6",
+                price:200,
+                discount:0.2,
+                quantity:50 ,// số lượng sản trong cửa hàng
+                bulkDiscount:{minQuantity:2, extraDiscount:0.1}
+            },
+            {
+                id:3,
+                name:"iphone7",
+                price:300,
+                discount:0.3,
+                quantity:70 ,// số lượng sản trong cửa hàng
+                bulkDiscount:{minQuantity:2, extraDiscount:0.1}
+            }
+        ]
+
+         function render() {
+            let html="";
+            for (let i = 0; i < products.length; i++) {
+               html+=
+               `
+                 <li>Name: ${products[i].name} </li>
+                <li>Gía : ${products[i].price} </li>
+                 <button onclick="addToCart(${i})">Mua</button>
+               ` 
+            }
+            document.getElementById("products").innerHTML= html;
+
+         }
+         render();
+         // tạo giỏ hàng
+         let cart=[];
+         function addToCart(index) {
+            console.log("index",index);
+            // Trước khi thêm sản phẩm vào giỏ hàng thì phải kiểm tra sản phẩm có còn hàng
+            // hay không
+            if(products[index].quantity>0){
+                // còn hàng
+                // kiểm tra xem sản phẩm có trong giỏ hàng hay chưa
+                // nếu có tăng số lượng, còn chưa có thêm mới
+                let findIndex= cart.findIndex((item)=>{
+                    return item.id== products[index].id;
+                })
+                if(findIndex==-1){
+                    // không có
+                    cart.push({...products[index],quantity:1});
+                    products[index].quantity--;
+                }else{
+                    // sản phẩm đã có trong giỏ hàng
+                    // đi tăng số lượng lên 1
+                    cart[findIndex].quantity=++cart[findIndex].quantity;
+                    products[index].quantity--;
+                }
+            }else{
+                // hết hàng
+                console.log("sản phẩm đã hết hàng!");
+            }
+            console.log("giỏ hang", cart);
+            console.log("sản phẩm ",products);
+            
+         }
+         // hàm tiến hành thanh toán
+         function pay(){
+            let total=0;
+            // tính tổng tiền để thanh toán 
+            for (let i = 0; i < cart.length; i++) {
+               if(cart[i].bulkDiscount){
+                if(cart[i].quantity>=cart[i].bulkDiscount.minQuantity){
+                    total+=cart[i].price * cart[i].quantity-cart[i].price* cart[i].quantity* cart[i].discount-cart[i].bulkDiscount.extraDiscount*cart[i].price.cart[i].quantity;
+                }else{
+                   total+= cart[i].price*cart[i].quantity-cart[i].price.cart[i].quantity*cart[i].discount;
+
+                }
+               }else{
+
+                   total+= cart[i].price * cart[i].quantity-cart[i].price.cart[i].quantity* cart[i].discount;
+               }
+            }
+         }
+    </script>
+</body>
+</html>

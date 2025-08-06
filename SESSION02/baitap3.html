@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>BÀI TẬP 3</h1>
+    <script>
+        // const typeConsole =(param)=>{
+        //     // return`console.${[param]}("123")`
+        //     if(param=="error"){
+        //         console.error("đây là type error");
+        //     }else if(param=="warn"){
+        //         console.warn("đây là type warn");
+        //     }
+        // }
+        // typeConsole("error");
+        // typeConsole("warn");
+
+        const typeConsole=(type ="log")=>{
+            console[type](  `đây là type ${type}`);
+            
+        }
+        typeConsole();
+        typeConsole("warn");
+        typeConsole("error")
+
+     
+  </script>
+</body>
+</html>

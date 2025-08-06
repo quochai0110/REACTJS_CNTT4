@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      class Student {
+        constructor(id, name, age, scores) {
+          this.id = id;
+          this.name = name;
+          this.age = age;
+          this.scores = scores;
+        }
+        // hàm tính điểm trung bình
+        diemTrungBinh() {
+          let sum = 0;
+          for (let i = 0; i < this.scores.length; i++) {
+            sum += this.scores[i];
+          }
+          return sum / 3;
+        }
+      }
+      let students = [];
+      let sv1 = new Student("01", "sv1", 20, [6, 7, 8]);
+      let sv2 = new Student("02", "sv2", 20, [5, 7, 9]);
+      let sv3 = new Student("03", "sv3", 20, [8, 7, 8]);
+      let sv4 = new Student("04", "sv4", 20, [9, 7, 8]);
+      let sv5 = new Student("05", "sv5", 20, [8, 8, 8]);
+      students.push(sv1, sv2, sv3, sv4, sv5);
+      let total= 0;
+      for (let i = 0; i < students.length; i++) {
+         total+= students[i].diemTrungBinh();
+      }
+      console.log("result",total/5);
+      
+    </script>
+  </body>
+</html>

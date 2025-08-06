@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+         Input
+         ["eat", "tea", "tan", "ate", "nat", "bat","tab"]
+
+         Output
+        [["eat","tea","ate"], ["tan","nat"], ["bat","tab"]]
+
+        let obj={};
+         */
+      function filter(arr) {
+        let obj = {};
+        //  let test_case01 = ["eat", "tea", "tan", "ate", "nat", "bat"];
+        for (let i = 0; i < arr.length; i++) {
+          // lấy từng phần tử trong mảng arr arr[i];
+          // sắp xếp từng phần tử theo bảng chữ cái (A-Z);
+          let word = arr[i].split("").sort().join(""); // ant
+           if (!obj[word]) {
+            obj[word] = [];
+          }
+          obj[word].push(arr[i]);
+            // console.log("obj",obj);
+        }
+        /* 
+            CÓ 2 CÁCH ĐỂ THÊM KEY VÀO OBJECT
+        */
+        console.log("result",Object.values(obj));
+        
+    }
+    filter(["eat", "tea", "tan", "ate", "nat", "bat","tba"]);
+    let obj={};
+    let abc="name"
+    obj[abc]="Hồng Nhung";
+
+
+        
+
+    </script>
+  </body>
+</html>
