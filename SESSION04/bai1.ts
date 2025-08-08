@@ -1,1 +1,0 @@
-let user: { name: string; age?: number }={name:"Minh Thu",age:""}
