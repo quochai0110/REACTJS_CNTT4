@@ -104,4 +104,18 @@ class Cinema {
         }
         return null;
     }
+    // 4. Ngừng chiếu phim
+    cancelMovie(movieId) {
+        let findMovieById = this.movies.find(item => item.id == movieId);
+        if (findMovieById) {
+            findMovieById.isShowing = false;
+        }
+    }
+    // 5. Hiển thị phim đang chiếu
+    listShowingMovies() {
+        let result = this.movies.filter(item => item.isShowing);
+        for (let index = 0; index < result.length; index++) {
+            console.log(`phim đang chiếu thứ ${index + 1}: Tên: ${result[index].title}`);
+        }
+    }
 }
