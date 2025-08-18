@@ -67,7 +67,12 @@ class AnimationMovie extends Movie {
 }
 // 4. Lớp TicketBooking 
 class TicketBooking {
-    constructor() {
+    constructor(audience, movie, quantity, totalPrice) {
+        this.bookingId = TicketBooking.counter++;
+        this.audience = audience;
+        this.movie = movie;
+        this.quantity = quantity;
+        this.totalPrice = totalPrice;
     }
     getDetail() {
         return `Thông tin đặt vé: ...`;
@@ -76,4 +81,27 @@ class TicketBooking {
 TicketBooking.counter = 1;
 // 5. Lớp cinema 
 class Cinema {
+    // Triển khai các phương thức
+    // 1. Thêm khán giả.
+    addAudience(name, email, phone) {
+        let newAudience = new Audience(name, email, phone);
+        this.audiences.push(newAudience);
+        return newAudience;
+    }
+    // 2. Thêm phim mới.
+    addMovie(movie) {
+        this.movies.push(movie); // Thêm phim mới
+    }
+    // 3. Đặt vé
+    bookTickets(audienceId, movieId, quantity) {
+        // Kiểm tra xem tồn tại id khách hàng, id phim
+        let findAudienceById = this.audiences.find(item => item.id === audienceId);
+        let findMovieById = this.movies.find(item => item.id == movieId);
+        if (findAudienceById && findMovieById && quantity > 0 && findMovieById.isShowing) {
+            let newBooking = new TicketBooking(findAudienceById, findMovieById, quantity, findMovieById.calculateTicketCost(quantity));
+            this.bookings.push(newBooking);
+            return newBooking;
+        }
+        return null;
+    }
 }
