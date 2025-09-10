@@ -10,6 +10,7 @@ import "./App.css"
 import Order from './pages/Order'
 import Login from './pages/Login'
 import ProductDetail from './pages/ProductDetail'
+import ProtectedRoute from './components/ProtectedRoute'
 
 export default function App() {
   const routers = createBrowserRouter([
@@ -27,7 +28,7 @@ export default function App() {
     },
      {
       path:"/admin",
-      element:<Admin></Admin>,
+      element: <ProtectedRoute element={ <Admin></Admin>}/>,
       children:[
         {
           path:"user",
