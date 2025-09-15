@@ -5,39 +5,44 @@ type User = {
   name: string;
 };
 export default function App() {
-  const [users, setUsers] = useState<any>([]);
-  const [name,setName]= useState<string>("");
- // function lấy data
+  const [users, setUsers] = useState<User[]>([]);
+  const [name, setName] = useState<string>("");
+  // function lấy data
   async function getData() {
     let res = await axios.get("http://localhost:8080/users");
-    console.log("res", res);
     setUsers([...res.data]);
   }
   // function thêm user vào database (json-server);
-  async function addNewUser(user:any){
-      let res= await axios.post("http://localhost:8080/users",user);
+  async function addNewUser(user: User|object) {
+    let res = await axios.post("http://localhost:8080/users", user);
+    return res.data;
   }
   useEffect(() => {
     getData();
   }, []);
 
   // tạo hàm thêm mới user
-  const addUser=()=>{
-      addNewUser({name:name});
-      setUsers([...users]);
-      setName("");
-  }
-  const handleChange=(e:any)=>{
-      setName(e.target.value);
-  }
-  const deleteUser=(id:number)=>{
-    console.log(id);
-    axios.delete(`http://localhost:8080/users/${id}`);
-    axios.patch(`http://localhost:8080/products/${id}`,{
-      name:"iphone5"
+  const addUser = async () => {
+    const newUser = await addNewUser({ name: name });
+    setUsers([...users, newUser]);
+    setName("");
+  };
+  const handleChange = (e: any) => {
+    setName(e.target.value);
+  };
+  const deleteUser = async (id: number) => {
+    await axios.delete(`http://localhost:8080/users/${id}`);
+    setUsers(users.filter((user: User) => user.id !== id));
+  };
+  const updateUser = async (item: User) => {
+    let userName = prompt("nhập tên user mới");
+    let res = await axios.patch(`http://localhost:8080/users/${item.id}`, {
+      name: userName,
     });
-    
-  }
+    let findIndex = users.findIndex((item: User) => item.id == res.data.id);
+    users[findIndex] = res.data;
+    setUsers([...users]);
+  };
   return (
     <div>
       học API
@@ -46,9 +51,14 @@ export default function App() {
       <button onClick={addUser}>thêm user</button>
       <ul>
         {users.map((item: any, index: number) => {
-          return <li key={index}> {item.name}
-           <button onClick={()=>deleteUser(item.id)}>xóa</button>
-          </li>;
+          return (
+            <li key={index}>
+              {" "}
+              {item.name}
+              <button onClick={() => deleteUser(item.id)}>xóa</button>
+              <button onClick={() => updateUser(item)}>sửa</button>
+            </li>
+          );
         })}
       </ul>
     </div>

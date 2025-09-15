@@ -1,12 +1,8 @@
 {
   "users": [
     {
-      "id": 2,
-      "name": "Hồng Vân"
-    },
-    {
-      "name": "nhung",
-      "id": 3
+      "name": "dfdfdf",
+      "id": 1
     }
   ],
   "todos": [],
@@ -14,8 +10,8 @@
     {
       "id": 1,
       "name": "iphone15",
-      "price":44,
-       "quantity":6
+      "price": 44,
+      "quantity": 6
     },
     {
       "id": 2,
@@ -26,7 +22,7 @@
       "id": 3
     },
     {
-      "name": "iphone18",
+      "name": "iphone5",
       "id": 4
     }
   ]
