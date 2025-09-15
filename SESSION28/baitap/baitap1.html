@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function calculate (a,b,c){
+            let result = a+b;
+            c(result);
+        }
+        function callbackCaculate(result){
+            console.log("kết quả của phép toán là", result);
+            document.write(`kết quả: ${result}`)
+        }
+        let numberA= +prompt("mời nhập số thứ nhất");
+        let numberB= +prompt("mời nhập số thứ 2");
+        calculate(numberA,numberB,callbackCaculate);
+    </script>
+</body>
+</html>

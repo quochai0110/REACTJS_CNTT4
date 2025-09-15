@@ -1,0 +1,31 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Minh Thu"
+    },
+    {
+      "id": 2,
+      "name": "Hồng Vân"
+    }
+  ],
+  "todos": [],
+  "products": [
+    {
+      "id": 1,
+      "name": "iphone15"
+    },
+    {
+      "id": 2,
+      "name": "iphone16"
+    },
+    {
+      "name": "iphone17",
+      "id": 3
+    },
+    {
+      "name": "iphone18",
+      "id": 4
+    }
+  ]
+}
