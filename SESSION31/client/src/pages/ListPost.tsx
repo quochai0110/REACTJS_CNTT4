@@ -10,7 +10,7 @@ interface Post {
   id: number;
   title: string;
   image: string;
-  date: string;
+  date: any;
   status: boolean;
 }
 export default function ListPost() {
@@ -19,7 +19,7 @@ export default function ListPost() {
   const[post,setPost]=useState<any>({
     title:"",
     image:"",
-    date:new Date().getDay,
+    date:new Date().getDate() + "/" + Number(new Date().getMonth()+1)  +"/" + new Date().getFullYear(),
     status:true
   })
   const handleClose = () => setShow(false);
