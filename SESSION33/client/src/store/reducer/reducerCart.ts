@@ -18,7 +18,6 @@ const initialState={
             quantity:5
         }
     ],
-    
 }
 export const reducerCart= (state=initialState, action:Action)=>{
    switch (action.type) {
@@ -27,7 +26,6 @@ export const reducerCart= (state=initialState, action:Action)=>{
         let index= state.cart.findIndex(item=> item.id==action.payload.id);
         state.cart[index].quantity+=1;
        return JSON.parse(JSON.stringify(state));
-   
     default:
        return state;
    }
