@@ -9,5 +9,5 @@ export interface Student {
 }
 export interface Action{
   type:string,
-  payload?:any
+  payload:any
 }
