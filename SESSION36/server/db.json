@@ -1,0 +1,26 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "linh"
+    },
+    {
+      "id": 2,
+      "name": "2/9"
+    },
+    {
+      "id": 3,
+      "name": "dinh khanh"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
