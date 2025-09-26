@@ -23,7 +23,6 @@ const App: React.FC = () => {
   const students= useSelector((state:any)=>{
      return state.students.students
   })
-  console.log("44444",students);
   
   const dispatch :any= useDispatch();
   useEffect(()=>{
