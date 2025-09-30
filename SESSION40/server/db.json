@@ -1,0 +1,42 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "name": "quần"
+    },
+    {
+      "id": 2,
+      "name": "áo"
+    },
+    {
+      "id": 3,
+      "name": "mũ"
+    }
+  ],
+  "products": [
+    {
+      "name": "quần âu",
+      "categoryId": 1,
+      "price": 500000,
+      "image": "http://res.cloudinary.com/dmvcyvtui/image/upload/v1759218395/jsukx3ofpefetrrwwlha.jpg",
+      "status": "active",
+      "id": 3
+    },
+    {
+      "name": "quần âu",
+      "categoryId": 1,
+      "price": 50000,
+      "image": "http://res.cloudinary.com/dmvcyvtui/image/upload/v1759218553/qvhmqncvsnmxwmevqadm.jpg",
+      "status": "active",
+      "id": 4
+    },
+    {
+      "name": "quần âu11",
+      "categoryId": 1,
+      "price": 80000,
+      "image": "http://res.cloudinary.com/dmvcyvtui/image/upload/v1759219083/wisi8rv5kya9p5ejiqj5.jpg",
+      "status": "active",
+      "id": 5
+    }
+  ]
+}
